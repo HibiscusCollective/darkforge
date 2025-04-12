@@ -1,0 +1,15 @@
+[package]
+name = "blind-smiths-furnace-gdext"
+categories.workspace = true
+version.workspace = true
+rust-version.workspace = true
+edition.workspace = true
+authors.workspace = true
+description.workspace = true
+keywords.workspace = true
+license.workspace = true
+readme.workspace = true
+documentation.workspace = true
+homepage.workspace = true
+repository.workspace = true
+publish.workspace = true

@@ -1,0 +1,29 @@
+[workspace]
+resolver = "3"
+members = ["crates/godot-plugin"]
+
+[workspace.package]
+version = "0.1.0"
+authors = [
+  "Pierre Fouilloux",
+  "Hibiscus Collective <https://github.com/HibiscusCollective>",
+  "Hibiscus Games <https://github.com/HibiscusGames>",
+]
+categories = ["game-development", "games"]
+keywords = ["gamedev", "framework", "godot", "plugin", "rules"]
+edition = "2024"
+rust-version = "1.85"
+description = "Blind Smith's Furnace is an extension for Godot engine that implements the Blades in the Dark SRD by One Seven Design."
+documentation = "https://github.com/HibiscusCollective/furnace"
+readme = "README.md"
+homepage = "https://github.com/HibiscusCollective/furnace"
+repository = "https://github.com/HibiscusCollective/furnace"
+license = "Proprietary"
+publish = false
+
+[workspace.lints.clippy]
+style = "deny"
+complexity = "deny"
+perf = "deny"
+restriction = "warn"
+pedantic = "warn"
