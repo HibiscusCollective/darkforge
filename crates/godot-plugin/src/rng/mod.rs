@@ -18,6 +18,10 @@ use rand::{
 use std::result;
 use thiserror::Error;
 
+mod dice;
+
+pub use dice::*;
+
 type Result<T> = result::Result<T, Error>;
 
 #[derive(Debug, Error)]
@@ -56,50 +60,15 @@ impl<T: SampleUniform> Random<T> for UniformThreadRandom<T> {
 }
 
 #[cfg(test)]
-mod tests {
-    use super::*;
-
-    macro_rules! assert_approx {
-        ($expect:expr, $actual:expr, $tolerance:expr) => {
-            assert!(
-                (($expect as isize - $actual as isize).abs() < $tolerance),
-                "expected: {} +/- {}, but got: {}",
-                $expect,
-                $tolerance,
-                $actual
-            );
-        };
-    }
-
-    const NUM: u32 = 1_000_000;
-
-    #[test]
-    fn should_distribute_values_evenly_when_sampling_single_values() {
-        let mut rng = UniformThreadRandom::new(0, 9).unwrap();
-
-        let mut buckets = [0u32; 10];
-        for _ in 0..NUM {
-            buckets[rng.next()] += 1;
-        }
-
-        assert_eq!(buckets.iter().sum::<u32>(), NUM, "should have recorded {} samples", NUM);
-        for bucket in buckets {
-            assert_approx!(NUM / 10, bucket, NUM as isize / 15);
-        }
-    }
-
-    #[test]
-    fn should_distribute_values_evenly_when_sampling_many_values() {
-        let mut rng = UniformThreadRandom::new(0, 9).unwrap();
-
-        let mut buckets = [0u32; 10];
-        for n in rng.take(NUM as usize) {
-            buckets[n] += 1;
-        }
-
-        assert_eq!(buckets.iter().sum::<u32>(), NUM, "should have recorded {} samples", NUM);
-        for bucket in buckets {
-            assert_approx!(NUM / 10, bucket, NUM as isize / 15);
-        }
-    }
+#[macro_export]
+macro_rules! assert_approx {
+    ($expect:expr, $actual:expr, $tolerance:expr) => {
+        assert!(
+            (($expect as isize - $actual as isize).unsigned_abs() < $tolerance),
+            "expected: {} +/- {}, but got: {}",
+            $expect,
+            $tolerance,
+            $actual
+        );
+    };
 }
