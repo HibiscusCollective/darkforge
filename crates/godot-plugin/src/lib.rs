@@ -11,3 +11,4 @@
  */
 
 pub mod rng;
+mod roll;

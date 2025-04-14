@@ -18,7 +18,7 @@ documentation = "https://github.com/HibiscusCollective/furnace"
 readme = "README.md"
 homepage = "https://github.com/HibiscusCollective/furnace"
 repository = "https://github.com/HibiscusCollective/furnace"
-license = "Proprietary"
+license = "AGPL-3.0-or-later"
 publish = false
 
 [workspace.lints.clippy]

@@ -19,16 +19,22 @@ pub trait Dice {
     fn roll_pool(&self, pool: usize) -> Vec<u8>;
 }
 
-pub type D4<R = UniformThreadRandom<u8>> = D<4, R>;
-pub type D6<R = UniformThreadRandom<u8>> = D<6, R>;
-pub type D8<R = UniformThreadRandom<u8>> = D<8, R>;
-pub type D10<R = UniformThreadRandom<u8>> = D<10, R>;
-pub type D12<R = UniformThreadRandom<u8>> = D<12, R>;
-pub type D20<R = UniformThreadRandom<u8>> = D<20, R>;
-pub type D100<R = UniformThreadRandom<u8>> = D<100, R>;
+pub type D4<R> = D<4, R>;
+pub type D6<R> = D<6, R>;
+pub type D8<R> = D<8, R>;
+pub type D10<R> = D<10, R>;
+pub type D12<R> = D<12, R>;
+pub type D20<R> = D<20, R>;
+pub type D100<R> = D<100, R>;
 
 pub struct D<const SIDES: u8, R: Random<u8>> {
     rng: Mutex<R>,
+}
+
+impl<const SIDES: u8, R: Random<u8>> D<SIDES, R> {
+    pub fn new(rng: R) -> Self {
+        Self { rng: Mutex::new(rng) }
+    }
 }
 
 impl<const SIDES: u8> Default for D<SIDES, UniformThreadRandom<u8>> {
@@ -83,12 +89,7 @@ mod tests {
         let approx_expect = SAMPLES / d.sides() as u32;
         let error_tolerance = (approx_expect as f64 * ERROR_TOLERANCE_PCT) as usize;
 
-        assert_eq!(
-            buckets.iter().sum::<u32>(),
-            SAMPLES,
-            "should have recorded {} samples",
-            SAMPLES
-        );
+        assert_eq!(buckets.iter().sum::<u32>(), SAMPLES, "should have recorded {} samples", SAMPLES);
         for bucket in buckets {
             assert_approx!(approx_expect, bucket, error_tolerance);
         }
@@ -113,12 +114,7 @@ mod tests {
         let approx_expect = SAMPLES / d.sides() as u32;
         let error_tolerance = (approx_expect as f64 * ERROR_TOLERANCE_PCT) as usize;
 
-        assert_eq!(
-            buckets.iter().sum::<u32>(),
-            SAMPLES,
-            "should have recorded {} samples",
-            SAMPLES
-        );
+        assert_eq!(buckets.iter().sum::<u32>(), SAMPLES, "should have recorded {} samples", SAMPLES);
         for bucket in buckets {
             assert_approx!(approx_expect, bucket, error_tolerance);
         }

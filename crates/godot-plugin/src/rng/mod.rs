@@ -10,11 +10,11 @@
  * If not, see https://www.gnu.org/licenses/.
  */
 use rand::{
-    Rng,
     distr::{Uniform, uniform, uniform::SampleUniform},
     prelude::Distribution,
     rngs::ThreadRng,
 };
+use std::iter::Cycle;
 use std::result;
 use thiserror::Error;
 
@@ -30,7 +30,7 @@ pub enum Error {
     UniformDistribution(#[from] uniform::Error),
 }
 
-pub trait Random<T, D: Distribution<T> = Uniform<T>, R: Rng = ThreadRng> {
+pub trait Random<T> {
     fn next(&mut self) -> T;
     fn take(&mut self, n: usize) -> Vec<T>;
 }
@@ -71,4 +71,29 @@ macro_rules! assert_approx {
             $actual
         );
     };
+}
+
+#[cfg(test)]
+impl<T: Clone, I: Iterator<Item = T> + Clone> Random<T> for Cycle<I> {
+    fn next(&mut self) -> T {
+        Iterator::next(&mut self.clone()).unwrap()
+    }
+
+    fn take(&mut self, n: usize) -> Vec<T> {
+        Iterator::take(&mut self.clone(), n).collect()
+    }
+}
+
+#[cfg(test)]
+pub struct Repeat<T: Clone>(pub T);
+
+#[cfg(test)]
+impl<T: Clone> Random<T> for Repeat<T> {
+    fn next(&mut self) -> T {
+        self.0.clone()
+    }
+
+    fn take(&mut self, n: usize) -> Vec<T> {
+        vec![self.0.clone(); n]
+    }
 }
