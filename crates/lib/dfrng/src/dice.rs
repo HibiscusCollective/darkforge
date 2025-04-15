@@ -37,8 +37,9 @@
 //! assert_eq!(results.len(), 3);
 //! ```
 
-use crate::rng::{Random, UniformThreadRandom};
 use std::sync::Mutex;
+
+use crate::rng::{Random, UniformThreadRandom};
 
 /// Trait defining the interface for dice objects.
 ///
@@ -310,9 +311,10 @@ impl<const SIDES: u8, R: Random<u8>> Dice for D<SIDES, R> {
 #[cfg(test)]
 #[expect(clippy::expect_used, reason = "Expect is allowed is tests")]
 mod tests {
+    use rstest::rstest;
+
     use super::*;
     use crate::assert_approx;
-    use rstest::rstest;
 
     const SAMPLES: u32 = 1_000_000;
     const ERROR_TOLERANCE_PCT: f64 = 5.0 / 100.0;

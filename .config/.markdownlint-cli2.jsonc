@@ -1,5 +1,5 @@
 {
-	"ignores": ["LICENSE", "**/node_modules", "**/toolchains"],
+	"ignores": ["LICENSE", "**/node_modules", "**/toolchains", "**/target"],
 	"config": {
 		"MD004": {
 			"style": "consistent"

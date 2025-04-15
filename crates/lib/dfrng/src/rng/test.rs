@@ -11,8 +11,9 @@
  */
 #![allow(clippy::cast_possible_wrap, clippy::cast_sign_loss, reason = "Allowing wrapping and sign loss in tests")]
 
-use crate::rng::Random;
 use core::iter::Cycle;
+
+use crate::rng::Random;
 
 /// Macro for asserting that a value is approximately equal to an expected value.
 ///

@@ -43,11 +43,13 @@
 pub mod test;
 
 use core::fmt::Debug;
-use fmt::Formatter;
-use rand::distr::uniform::SampleUniform;
-use rand::distr::{Distribution as _, Uniform};
-use rand::prelude::ThreadRng;
 use std::fmt;
+
+use fmt::Formatter;
+use rand::{
+    distr::{Distribution as _, Uniform, uniform::SampleUniform},
+    prelude::ThreadRng,
+};
 
 /// Trait for random number generators.
 ///

@@ -44,6 +44,7 @@
 //! ```
 
 use core::result;
+
 use rand::distr::uniform;
 use thiserror::Error;
 
