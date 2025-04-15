@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = ["crates/godot-plugin"]
+members = ["crates/lib/dfrng"]
 
 [workspace.package]
 version = "0.1.0"
@@ -13,7 +13,7 @@ categories = ["game-development", "games"]
 keywords = ["gamedev", "framework", "godot", "plugin", "rules"]
 edition = "2024"
 rust-version = "1.85"
-description = "Blind Smith's Furnace is an extension for Godot engine that implements the Blades in the Dark SRD by One Seven Design."
+description = "Blind Smith's Furnace is a library and extension for Godot engine that implements the Blades in the Dark SRD by One Seven Design."
 documentation = "https://github.com/HibiscusCollective/furnace"
 readme = "README.md"
 homepage = "https://github.com/HibiscusCollective/furnace"
@@ -22,8 +22,17 @@ license = "AGPL-3.0-or-later"
 publish = false
 
 [workspace.lints.clippy]
-style = "deny"
-complexity = "deny"
-perf = "deny"
-restriction = "warn"
-pedantic = "warn"
+style = { level = "deny", priority = -1 }
+complexity = { level = "deny", priority = -1 }
+perf = { level = "deny", priority = -1 }
+pedantic = { level = "warn", priority = -1 }
+implicit_return = "allow"
+question_mark_used = "allow"
+unseparated_literal_suffix = "allow"
+mod_module_files = "allow"
+self_named_module_files = "allow"
+arbitrary_source_item_ordering = "allow"
+arithmetic_side_effects = "allow"
+float_arithmetic = "allow"
+as_conversions = "allow"
+indexing_slicing = "allow"

@@ -1,0 +1,6 @@
+[build]
+# Default configuration is set in rust-toolchain.toml (stable)
+
+# Use nightly for rustfmt
+[unstable]
+rustfmt-path = "rustup run nightly rustfmt"

@@ -8,6 +8,8 @@
 !rust-toolchain.toml
 !*.rs
 
+!.cargo/
+
 !bun.lock
 !tsconfig.json
 !package-lock.json
