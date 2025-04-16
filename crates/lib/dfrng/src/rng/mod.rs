@@ -9,7 +9,6 @@
  * You should have received a copy of the GNU Affero General Public License along with this program.
  * If not, see https://www.gnu.org/licenses/.
  */
-
 //! # Random Number Generation
 //!
 //! This module provides random number generation utilities for tabletop gaming applications.
@@ -43,13 +42,57 @@
 pub mod test;
 
 use core::fmt::Debug;
-use std::fmt;
+use std::{fmt, result};
 
 use fmt::Formatter;
 use rand::{
     distr::{Distribution as _, Uniform, uniform::SampleUniform},
     prelude::ThreadRng,
 };
+use thiserror::Error;
+
+/// Error type for random number generation operations.
+///
+/// This enum represents the various errors that can occur during random number generation
+/// operations in this module.
+///
+/// # Examples
+///
+/// ```
+/// use dfrng::rng::{UniformThreadRandom, RngError};
+/// use rand::distr::uniform::Error;
+///
+/// // This will fail because the lower bound is greater than the upper bound
+/// let err = UniformThreadRandom::<u8>::new(10, 5).expect_err("should have failed");
+/// assert_eq!(RngError::InvalidDistribution(Error::EmptyRange), err);
+/// ```
+#[derive(Debug, Error, PartialEq)]
+pub enum RngError {
+    /// An error occurred in the uniform distribution.
+    ///
+    /// This typically happens when the parameters to create a uniform distribution
+    /// are invalid, such as when the lower bound is greater than the upper bound.
+    #[error("invalid distribution: {0}")]
+    InvalidDistribution(#[from] rand::distr::uniform::Error),
+}
+
+/// A specialized Result type for random number generation operations.
+///
+/// This type is used throughout this module to return either a successful value
+/// or an error that occurred during the operation.
+///
+/// # Examples
+///
+/// ```
+/// use dfrng::rng::{UniformThreadRandom, Result};
+///
+/// fn create_random_generator() -> Result<UniformThreadRandom<u8>> {
+///     UniformThreadRandom::new(1, 100)
+/// }
+///
+/// let generator = create_random_generator().expect("Failed to create random generator");
+/// ```
+pub type Result<T> = result::Result<T, RngError>;
 
 /// Trait for random number generators.
 ///
@@ -177,7 +220,7 @@ impl<T: SampleUniform> UniformThreadRandom<T> {
     /// `low > high`. In this case, the `UniformThreadRandom::new` constructor will return
     /// an error.
     #[inline]
-    pub fn new(low: T, high: T) -> crate::Result<Self> {
+    pub fn new(low: T, high: T) -> Result<Self> {
         let distribution = Uniform::new_inclusive(low, high)?;
         Ok(Self {
             distribution,
@@ -217,5 +260,18 @@ impl<T: SampleUniform> Random<T> for UniformThreadRandom<T> {
     #[inline]
     fn take(&mut self, n: usize) -> Vec<T> {
         (&self.distribution).sample_iter(&mut self.rng).take(n).collect()
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use rand::distr::uniform::Error;
+
+    use super::*;
+
+    #[test]
+    fn should_return_error_when_uniform_distribution_upper_bound_is_smaller_than_lower_bound() {
+        let err = UniformThreadRandom::new(10, 5).expect_err("should have failed");
+        assert_eq!(RngError::InvalidDistribution(Error::EmptyRange), err);
     }
 }

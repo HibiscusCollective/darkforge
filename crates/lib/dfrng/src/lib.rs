@@ -45,42 +45,46 @@
 
 use core::result;
 
-use rand::distr::uniform;
+use rng::RngError;
 use thiserror::Error;
 
+pub mod cards;
 pub mod dice;
 pub mod rng;
 
 /// Errors that can occur in DFRNG operations.
 ///
 /// This enum represents the various errors that can occur when using the DFRNG library.
-/// Currently, it wraps errors from the underlying random number generation libraries.
+/// It wraps errors from the random number generation module.
 ///
 /// # Examples
 ///
 /// ```
-/// use dfrng::rng::UniformThreadRandom;
+/// use dfrng::rng::{UniformThreadRandom, RngError};
 /// use dfrng::DFRngError;
 ///
 /// // This will fail because high < low
 /// let err = UniformThreadRandom::<u8>::new(100, 1).expect_err("should have failed");
 /// match err {
-///     DFRngError::UniformDistribution(e) => {
-///         // Handle the uniform distribution error
-///         println!("Error creating distribution: {}", e);
+///     DFRngError::RngError(e) => {
+///         // Handle the RNG error
+///         match e {
+///             RngError::InvalidDistribution(_) => {
+///                 println!("Invalid distribution parameters");
+///             }
+///         }
 ///     }
-///     _ => panic!("unexpected error type")
 /// }
 /// ```
 #[derive(Debug, Error)]
 #[non_exhaustive]
 pub enum DFRngError {
-    /// An error occurred in the uniform distribution.
+    /// An error occurred in the random number generation.
     ///
-    /// This typically happens when the parameters to create a uniform distribution
-    /// are invalid, such as when the lower bound is greater than the upper bound.
+    /// This wraps errors from the `rng` module, such as invalid distribution parameters.
+    /// See `rng::RngError` for more details on specific error types.
     #[error(transparent)]
-    UniformDistribution(#[from] uniform::Error),
+    RngError(#[from] RngError),
 }
 
 /// A specialized Result type for DFRNG operations.
