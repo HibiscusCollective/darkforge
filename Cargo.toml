@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = ["crates/lib/dfrng"]
+members = ["crates/lib/rng"]
 
 [workspace.package]
 version = "0.1.0"
@@ -13,11 +13,11 @@ categories = ["game-development", "games"]
 keywords = ["gamedev", "framework", "godot", "plugin", "rules"]
 edition = "2024"
 rust-version = "1.85"
-description = "Blind Smith's Furnace is a library and extension for Godot engine that implements the Blades in the Dark SRD by One Seven Design."
-documentation = "https://github.com/HibiscusCollective/furnace"
+description = "Dark Forge is a library and extension for Godot engine that implements the Blades in the Dark SRD by One Seven Design."
+documentation = "https://github.com/HibiscusCollective/DarkForge"
 readme = "README.md"
-homepage = "https://github.com/HibiscusCollective/furnace"
-repository = "https://github.com/HibiscusCollective/furnace"
+homepage = "https://github.com/HibiscusCollective/DarkForge"
+repository = "https://github.com/HibiscusCollective/DarkForge"
 license = "AGPL-3.0-or-later"
 publish = false
 

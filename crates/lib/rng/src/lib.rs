@@ -28,8 +28,8 @@
 //! ## Examples
 //!
 //! ```
-//! use dfrng::dice::{Dice, D20};
-//! use dfrng::rng::Random;
+//! use darkforge_rng::dice::{Dice, D20};
+//! use darkforge_rng::rng::Random;
 //!
 //! // Create a 20-sided die
 //! let d20 = D20::default();
@@ -60,8 +60,8 @@ pub mod rng;
 /// # Examples
 ///
 /// ```
-/// use dfrng::rng::{UniformThreadRandom, RngError};
-/// use dfrng::DFRngError;
+/// use darkforge_rng::rng::{UniformThreadRandom, RngError};
+/// use darkforge_rng::DFRngError;
 ///
 /// // This will fail because high < low
 /// let err = UniformThreadRandom::<u8>::new(100, 1).expect_err("should have failed");
@@ -74,9 +74,10 @@ pub mod rng;
 ///             }
 ///         }
 ///     }
+///     _ => panic!("unexpected error type")
 /// }
 /// ```
-#[derive(Debug, Error)]
+#[derive(Debug, Error, PartialEq)]
 #[non_exhaustive]
 pub enum DFRngError {
     /// An error occurred in the random number generation.
@@ -87,7 +88,7 @@ pub enum DFRngError {
     RngError(#[from] RngError),
 }
 
-/// A specialized Result type for DFRNG operations.
+/// A specialised Result type for DFRNG operations.
 ///
 /// This type is used throughout the crate to return either a successful value
 /// or an error that occurred during the operation.
@@ -95,8 +96,8 @@ pub enum DFRngError {
 /// # Examples
 ///
 /// ```
-/// use dfrng::rng::UniformThreadRandom;
-/// use dfrng::Result;
+/// use darkforge_rng::rng::UniformThreadRandom;
+/// use darkforge_rng::Result;
 ///
 /// fn create_random_generator() -> Result<UniformThreadRandom<u8>> {
 ///     UniformThreadRandom::new(1, 100)

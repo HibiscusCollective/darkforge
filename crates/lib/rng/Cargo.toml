@@ -1,5 +1,5 @@
 [package]
-name = "dfrng"
+name = "darkforge_rng"
 version.workspace = true
 authors.workspace = true
 categories.workspace = true

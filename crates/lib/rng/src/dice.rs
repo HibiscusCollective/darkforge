@@ -23,7 +23,7 @@
 //! ## Examples
 //!
 //! ```
-//! use dfrng::dice::{Dice, D6};
+//! use darkforge_rng::dice::{Dice, D6};
 //!
 //! // Create a standard six-sided die
 //! let d6 = D6::default();
@@ -53,7 +53,7 @@ pub trait Dice {
     /// # Examples
     ///
     /// ```
-    /// use dfrng::dice::{Dice, D6};
+    /// use darkforge_rng::dice::{Dice, D6};
     ///
     /// let d6 = D6::default();
     /// let result = d6.roll();
@@ -70,7 +70,7 @@ pub trait Dice {
     /// # Examples
     ///
     /// ```
-    /// use dfrng::dice::{Dice, D10};
+    /// use darkforge_rng::dice::{Dice, D10};
     ///
     /// let d10 = D10::default();
     /// let results = d10.roll_pool(5);
@@ -86,7 +86,7 @@ pub trait Dice {
     /// # Examples
     ///
     /// ```
-    /// use dfrng::dice::{Dice, D20};
+    /// use darkforge_rng::dice::{Dice, D20};
     ///
     /// let d20 = D20::default();
     /// assert_eq!(d20.sides(), 20);
@@ -99,7 +99,7 @@ pub trait Dice {
 /// # Examples
 ///
 /// ```
-/// use dfrng::dice::{Dice, D10};
+/// use darkforge_rng::dice::{Dice, D10};
 ///
 /// let d10 = D10::default();
 /// let result = d10.roll();
@@ -112,7 +112,7 @@ pub type D10<R> = D<10, R>;
 /// # Examples
 ///
 /// ```
-/// use dfrng::dice::{Dice, D100};
+/// use darkforge_rng::dice::{Dice, D100};
 ///
 /// let d100 = D100::default();
 /// let result = d100.roll();
@@ -125,7 +125,7 @@ pub type D100<R> = D<100, R>;
 /// # Examples
 ///
 /// ```
-/// use dfrng::dice::{Dice, D12};
+/// use darkforge_rng::dice::{Dice, D12};
 ///
 /// let d12 = D12::default();
 /// let result = d12.roll();
@@ -138,7 +138,7 @@ pub type D12<R> = D<12, R>;
 /// # Examples
 ///
 /// ```
-/// use dfrng::dice::{Dice, D20};
+/// use darkforge_rng::dice::{Dice, D20};
 ///
 /// let d20 = D20::default();
 /// let result = d20.roll();
@@ -151,7 +151,7 @@ pub type D20<R> = D<20, R>;
 /// # Examples
 ///
 /// ```
-/// use dfrng::dice::{Dice, D4};
+/// use darkforge_rng::dice::{Dice, D4};
 ///
 /// let d4 = D4::default();
 /// let result = d4.roll();
@@ -164,7 +164,7 @@ pub type D4<R> = D<4, R>;
 /// # Examples
 ///
 /// ```
-/// use dfrng::dice::{Dice, D6};
+/// use darkforge_rng::dice::{Dice, D6};
 ///
 /// let d6 = D6::default();
 /// let result = d6.roll();
@@ -177,7 +177,7 @@ pub type D6<R> = D<6, R>;
 /// # Examples
 ///
 /// ```
-/// use dfrng::dice::{Dice, D8};
+/// use darkforge_rng::dice::{Dice, D8};
 ///
 /// let d8 = D8::default();
 /// let result = d8.roll();
@@ -203,8 +203,8 @@ pub type D8<R> = D<8, R>;
 /// Creating a custom 30-sided die:
 ///
 /// ```
-/// use dfrng::dice::{D, Dice};
-/// use dfrng::rng::UniformThreadRandom;
+/// use darkforge_rng::dice::{D, Dice};
+/// use darkforge_rng::rng::UniformThreadRandom;
 ///
 /// // Create a 30-sided die with the default random number generator
 /// let d30 = D::<30, UniformThreadRandom<u8>>::default();
@@ -215,8 +215,8 @@ pub type D8<R> = D<8, R>;
 /// Using a custom random number generator:
 ///
 /// ```
-/// use dfrng::dice::{D, Dice};
-/// use dfrng::rng::UniformThreadRandom;
+/// use darkforge_rng::dice::{D, Dice};
+/// use darkforge_rng::rng::UniformThreadRandom;
 ///
 /// // Create a custom RNG for a 12-sided die
 /// let rng = UniformThreadRandom::new(1, 12).unwrap();
@@ -246,16 +246,16 @@ impl<const SIDES: u8, R: Random<u8>> D<SIDES, R> {
     ///
     /// # Arguments
     ///
-    /// * `dfrng` - A random number generator that implements the [`Random<u8>`](Random) trait
+    /// * `rng` - A random number generator that implements the [`Random<u8>`](Random) trait
     ///
     /// # Examples
     ///
     /// ```
-    /// use dfrng::dice::{D, Dice};
-    /// use dfrng::rng::UniformThreadRandom;
+    /// use darkforge_rng::dice::{D, Dice};
+    /// use darkforge_rng::rng::UniformThreadRandom;
     ///
-    /// let dfrng = UniformThreadRandom::new(1, 20).unwrap();
-    /// let d20 = D::<20, _>::new(dfrng);
+    /// let rng = UniformThreadRandom::new(1, 20).unwrap();
+    /// let d20 = D::<20, _>::new(rng);
     ///
     /// let result = d20.roll();
     /// assert!(result >= 1 && result <= 20);
@@ -275,7 +275,7 @@ impl<const SIDES: u8> Default for D<SIDES, UniformThreadRandom<u8>> {
     /// # Examples
     ///
     /// ```
-    /// use dfrng::dice::{D, Dice};
+    /// use darkforge_rng::dice::{D, Dice};
     ///
     /// let d6 = D::<6, _>::default();
     /// let result = d6.roll();

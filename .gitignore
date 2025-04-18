@@ -36,7 +36,6 @@
 !docs
 !docs/**/
 !*.md
-!LICENSE
 !README.md
 
 ##### Branding #####
@@ -72,7 +71,7 @@
 ##### Licenses #####
 !/.attribution
 !/.attribution/**/
-!LICENSE
+!LICENCE
 !*.txt
 
 #### LFS Assets ####
