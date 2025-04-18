@@ -38,4 +38,4 @@ as_conversions = "allow"
 indexing_slicing = "allow"
 
 [workspace.dependencies]
-darkforge_rng = { path = "crates/lib/rng" }
+darkforge_rng = { version = "0.1.0", path = "crates/lib/rng" }
