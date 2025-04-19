@@ -1,8 +1,8 @@
 [tools]
 markdownlint-cli2 = "0.17.2"
-gh = "2.69.0"
+gh = "2.70.0"
 bun = "1.2.9"
-"go:github.com/evilmartians/lefthook" = "1.11.9"
+"go:github.com/evilmartians/lefthook" = "1.11.10"
 
 [task_config]
 includes = [
