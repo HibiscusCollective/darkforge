@@ -1,32 +1,3 @@
 # Normalize EOL for all files that Git considers text files.
 * text=auto eol=lf
 
-# Image project files
-*.psd filter=lfs diff=lfs merge=lfs -text lockable
-*.xdf filter=lfs diff=lfs merge=lfs -text lockable
-*.kra filter=lfs diff=lfs merge=lfs -text lockable
-
-# Image files
-*.png filter=lfs diff=lfs merge=lfs -text lockable
-*.jpg filter=lfs diff=lfs merge=lfs -text lockable
-*.jpeg filter=lfs diff=lfs merge=lfs -text lockable
-*.tiff filter=lfs diff=lfs merge=lfs -text lockable
-*.tga filter=lfs diff=lfs merge=lfs -text lockable
-
-# Audio Project Files
-*.aup3 filter=lfs diff=lfs merge=lfs -text lockable
-*.sesx filter=lfs diff=lfs merge=lfs -text lockable
-*.flp  filter=lfs diff=lfs merge=lfs -text lockable
-*.rpp  filter=lfs diff=lfs merge=lfs -text lockable
-*.als  filter=lfs diff=lfs merge=lfs -text lockable
-
-# Game Audio Assets
-*.wav  filter=lfs diff=lfs merge=lfs -text lockable
-*.ogg  filter=lfs diff=lfs merge=lfs -text lockable
-*.mp3  filter=lfs diff=lfs merge=lfs -text lockable
-
-# Support Audio Files
-*.aif  filter=lfs diff=lfs merge=lfs -text lockable
-*.aiff filter=lfs diff=lfs merge=lfs -text lockable
-*.mid  filter=lfs diff=lfs merge=lfs -text lockable
-*.midi filter=lfs diff=lfs merge=lfs -text lockable

@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = ["crates/lib/rng", "crates/lib/core"]
+members = ["crates/lib/rng", "crates/lib/core", "examples/hungry_goblins/gdext"]
 
 [workspace.package]
 version = "0.1.0"
@@ -38,4 +38,6 @@ as_conversions = "allow"
 indexing_slicing = "allow"
 
 [workspace.dependencies]
+darkforge = { version = "0.1.0", path = "crates/lib/core" }
 darkforge_rng = { version = "0.1.0", path = "crates/lib/rng" }
+

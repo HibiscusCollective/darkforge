@@ -1,0 +1,20 @@
+######## Godot #######
+!game/
+
+!project.godot
+!*.tscn
+!*.tres
+!*.import
+
+####### GDExt ########
+!gdext/
+
+##### Art Assets #####
+!raw-assets/
+
+!*.ase
+!*.kra
+!*.tga
+
+###### Examples ######
+!hungry_goblins/

@@ -11,11 +11,11 @@
     "**/target/**",
     "**/*.lock",
     "LICENSE",
-    "game/**/*.import",
-    "game/**/*.uid",
-    "game/**/*.tscn",
-    "game/**/*.tres",
-    "game/*.godot"
+    "examples/**/game/**/*.import",
+    "examples/**/game/**/*.uid",
+    "examples/**/game/**/*.tscn",
+    "examples/**/game/**/*.tres",
+    "examples/**/game/*.godot"
   ],
   "ignoreRegExpList": [
     "/(?<=---[\\n\\r]+(?:.*[\\n\\r])*)\\s*id: \\w+(?=[\\n\\r]+.|[\\n\\r]+---)+/gm"

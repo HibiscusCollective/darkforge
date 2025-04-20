@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bi674ujlgjrwr"]
+
+[ext_resource type="PackedScene" uid="uid://cs7vpcx3f27p7" path="res://prefabs/door_single_top.tscn" id="1_eh4se"]
+[ext_resource type="PackedScene" uid="uid://drry0furrljko" path="res://prefabs/door_single_bottom.tscn" id="2_si1xg"]
+
+[node name="DoubleDoors" type="Node2D"]
+
+[node name="Door_Top" parent="." instance=ExtResource("1_eh4se")]
+position = Vector2(0, -64)
+rotation = 0.00265148
+
+[node name="Door_Bottom" parent="." instance=ExtResource("2_si1xg")]
+position = Vector2(0, 64)
