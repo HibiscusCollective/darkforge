@@ -12,7 +12,7 @@ authors = [
 categories = ["game-development", "games"]
 keywords = ["gamedev", "framework", "godot", "plugin", "rules"]
 edition = "2024"
-rust-version = "1.85"
+rust-version = "1.86"
 description = "Dark Forge is a library and extension for Godot engine that implements the Blades in the Dark SRD by One Seven Design."
 documentation = "https://github.com/HibiscusCollective/DarkForge"
 readme = "README.md"
@@ -40,4 +40,3 @@ indexing_slicing = "allow"
 [workspace.dependencies]
 darkforge = { version = "0.1.0", path = "crates/lib/core" }
 darkforge_rng = { version = "0.1.0", path = "crates/lib/rng" }
-

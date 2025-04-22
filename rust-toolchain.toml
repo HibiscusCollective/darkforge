@@ -1,10 +1,9 @@
 [toolchain]
 channel = "stable"
 profile = "default"
-components = ["rust-analyzer"]
+components = ["rust-analyzer", "cargo-audit"]
 targets = [
     "x86_64-unknown-linux-gnu",
     "i686-unknown-linux-gnu",
-    "x86_64-pc-windows-msvc",
-    "i686-pc-windows-msvc",
+    "x86_64-pc-windows-gnu"
 ]

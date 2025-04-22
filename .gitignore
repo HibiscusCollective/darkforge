@@ -4,7 +4,9 @@
 ###### Code ########
 !Cargo.lock
 !Cargo.toml
+!Cross.toml
 !config.toml
+!bacon.toml
 !rust-toolchain.toml
 !*.rs
 

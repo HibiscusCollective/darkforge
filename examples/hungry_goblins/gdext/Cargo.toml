@@ -14,7 +14,12 @@ repository.workspace = true
 license.workspace = true
 publish.workspace = true
 
-[dependencies]
+[lib]
+crate-type = ["cdylib"]
 
 [lints]
 workspace = true
+
+[dependencies]
+darkforge.workspace = true
+godot = "0.2.4"

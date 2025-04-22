@@ -2,13 +2,14 @@
 markdownlint-cli2 = "0.17.2"
 gh = "2.70.0"
 bun = "1.2.9"
-"go:github.com/evilmartians/lefthook" = "1.11.10"
+"go:github.com/evilmartians/lefthook" = "1.11.11"
 
 [task_config]
 includes = [
   ".config/tasks.md.toml",
   ".config/tasks.rs.toml",
   ".config/tasks.ts.toml",
+  ".config/tasks.ex.toml",
 ]
 
 [vars]
@@ -19,7 +20,21 @@ CLIPPY_CONF_DIR = "{{vars.config_dir}}"
 
 [tasks.bootstrap]
 description = "Bootstrap the project"
-run = "bun install && lefthook install"
+run = """
+  bun install && \
+  lefthook install && \
+  cargo install cargo-binstall && \
+  cargo binstall cargo-xwin xwin cargo-audit
+"""
+
+[tasks.dev]
+description = "Run all development tasks"
+run = "bacon dev"
+
+[tasks."dev:impl"]
+hide = true
+depends = ["fmt", "lint", "test"]
+run = "mise run examples:all"
 
 [tasks.fmt]
 description = "Run all formatting tasks"
@@ -37,6 +52,34 @@ depends = ["fix:*"]
 description = "Run spell check"
 run = "bun spellcheck"
 
+[tasks.test]
+description = "Run all tests in debug mode"
+depends = ["test:debug"]
+
+[tasks."test:debug"]
+description = "Run all tests in debug mode"
+run = "cargo test"
+
+[tasks."test:release"]
+description = "Run all tests in release mode"
+run = "cargo test --release"
+
 [tasks."build"]
 description = "Build all libraries in debug mode"
-depends = ["build:debug:libs"]
+depends = ["build:debug", "build:examples"]
+
+[tasks."build:debug:all"]
+description = "Build all libraries in release mode"
+depends = ["build:debug:*", "examples:debug"]
+
+[tasks."build:release:all"]
+description = "Build all libraries in release mode"
+depends = ["build:release:*", "examples:release"]
+
+[tasks."build:examples"]
+description = "Build all examples in debug mode"
+depends = ["examples:debug"]
+
+[tasks."build:examples:all"]
+description = "Build all examples"
+depends = ["examples:debug", "examples:release"]

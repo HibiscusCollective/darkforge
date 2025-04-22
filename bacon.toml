@@ -1,0 +1,11 @@
+default_job = "dev"
+env.CARGO_TERM_COLOR = "always"
+
+[jobs.dev]
+command = ["mise", "run", "dev:impl"]
+need_stdout = true
+analyzer = "nextest"
+allow_warnings = true
+
+[keybindings]
+v = "job:dev"
