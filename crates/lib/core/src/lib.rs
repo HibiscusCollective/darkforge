@@ -9,8 +9,28 @@
  * You should have received a copy of the GNU Affero General Public License along with this program.
  * If not, see https://www.gnu.org/licenses/.
  */
-mod action;
+mod descriptor;
 
 pub struct Character {
     name: String,
+}
+
+pub struct AttributeRecord {
+    id: [u8; 16],
+    label: String,
+    description: String,
+}
+
+pub struct ActionRecord {
+    id: [u8; 16],
+    label: String,
+    description: String,
+    attribute_id: [u8; 16],
+}
+
+#[cfg(test)]
+mod tests {
+    use limbo::Builder;
+
+    use super::*;
 }

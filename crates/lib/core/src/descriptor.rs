@@ -11,7 +11,10 @@
  */
 use std::borrow::Cow;
 
-struct Action<'a, const KEY: u8> {
-    name: Cow<'a, str>,
+use uuid::Uuid;
+
+struct Descriptor<'a> {
+    id: Uuid,
+    label: Cow<'a, str>,
     description: Cow<'a, str>,
 }
