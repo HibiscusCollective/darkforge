@@ -1,0 +1,9 @@
+######## Project folders ########
+!assets/
+!assets/**/
+
+!prefabs/
+!scenes/
+
+##### Exclude .godot folder #####
+.godot

@@ -1,0 +1,12 @@
+[configuration]
+entry_symbol = "gdext_rust_init"
+compatibility_minimum = 4.0
+reloadable = true
+
+[libraries]
+linux.debug.x86_64 =     "res://libs/debug/orcnpie.gnu_linux.x86_64.so"
+linux.release.x86_64 =   "res://libs/release/orcnpie.gnu_linux.x86_64.so"
+linux.debug.x86_32 =     "res://libs/debug/orcnpie.gnu_linux.x86_32.so"
+linux.release.x86_32 =   "res://libs/release/orcnpie.gnu_linux.x86_32.so"
+windows.debug.x86_64 =   "res://libs/debug/orcnpie.win.x86_64.dll"
+windows.release.x86_64 = "res://libs/release/orcnpie.win.x86_64.dll"

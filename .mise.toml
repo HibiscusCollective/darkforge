@@ -10,6 +10,8 @@ includes = [
   ".config/tasks.rs.toml",
   ".config/tasks.ts.toml",
   ".config/tasks.ex.toml",
+  "examples/hungry_goblins/tasks.toml",
+  "examples/orcnpie/tasks.toml"
 ]
 
 [vars]
