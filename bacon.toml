@@ -4,8 +4,11 @@ env.CARGO_TERM_COLOR = "always"
 [jobs.dev]
 command = ["mise", "run", "dev:impl"]
 need_stdout = true
-analyzer = "nextest"
 allow_warnings = true
+
+[jobs.build]
+command = ["mise", "run", "build:examples"]
 
 [keybindings]
 v = "job:dev"
+b = "job:build"

@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = ["crates/lib/rng", "crates/lib/core", "examples/hungry_goblins/gdext"]
+members = ["crates/lib/rng", "crates/lib/data", "examples/hungry_goblins/gdext"]
 
 [workspace.package]
 version = "0.1.0"
