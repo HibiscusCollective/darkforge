@@ -1,0 +1,51 @@
+["examples:orcnpie"]
+description = "Build and deploy libraries for the orc & pie example using the current os and architecture"
+depends = ["examples:orcnpie:ensure_dirs:*"]
+run = "mise run examples:debug:linux:orcnpie"
+run_windows = "mise run examples:debug:windows:orcnpie"
+
+["examples:orcnpie:ensure_dirs:debug"]
+hide = true
+run = "mkdir -p examples/orcnpie/game/libs/debug/"
+
+["examples:orcnpie:ensure_dirs:release"]
+hide = true
+run = "mkdir -p examples/orcnpie/game/libs/release/"
+
+["examples:debug:linux:orcnpie"]
+hide = true
+depends = ["examples:orcnpie:ensure_dirs:debug", "build:debug:linux:*"]
+description = "Build and deploy libraries for the orc & pie example for Linux in debug mode"
+run = """
+  cp target/x86_64-unknown-linux-gnu/debug/liborc_n_pie.d examples/orcnpie/game/libs/debug/orcnpie.gnu_linux.x86_64.d
+  cp target/i686-unknown-linux-gnu/debug/liborc_n_pie.d examples/orcnpie/game/libs/debug/orcnpie.gnu_linux.x86_32.d
+  cp target/x86_64-unknown-linux-gnu/debug/liborc_n_pie.so examples/orcnpie/game/libs/debug/orcnpie.gnu_linux.x86_64.so
+  cp target/i686-unknown-linux-gnu/debug/liborc_n_pie.so examples/orcnpie/game/libs/debug/orcnpie.gnu_linux.x86_32.so
+"""
+
+["examples:release:linux:orcnpie"]
+hide = true
+depends = ["examples:orcnpie:ensure_dirs:release", "build:release:linux:*"]
+description = "Build and deploy libraries for the orc & pie example for Linux in release mode"
+run = """
+  mkdir -p examples/orcnpie/game/libs/release/
+  cp target/x86_64-unknown-linux-gnu/release/liborc_n_pie.so examples/orcnpie/game/libs/release/orcnpie.gnu_linux.x86_64.so
+  cp target/i686-unknown-linux-gnu/release/liborc_n_pie.so examples/orcnpie/game/libs/release/orcnpie.gnu_linux.x86_32.so
+"""
+
+["examples:debug:windows:orcnpie"]
+depends = ["examples:orcnpie:ensure_dirs:debug", "build:debug:windows:*"]
+hide = true
+description = "Build and deploy libraries for the orc & pie example for Windows in debug mode"
+run = """
+  cp target/x86_64-pc-windows-gnu/debug/orc_n_pie.d examples/orcnpie/game/libs/debug/orcnpie.win.x86_64.d
+  cp target/x86_64-pc-windows-gnu/debug/orc_n_pie.dll examples/orcnpie/game/libs/debug/orcnpie.win.x86_64.so
+"""
+
+["examples:release:windows:orcnpie"]
+depends = ["examples:orcnpie:ensure_dirs:release", "build:release:windows:*"]
+hide = true
+description = "Build and deploy libraries for the orc & pie example for Windows in release mode"
+run = """
+  cp target/x86_64-pc-windows-gnu/release/orc_n_pie.dll examples/orcnpie/game/libs/release/orcnpie.win.x86_64.dll
+"""

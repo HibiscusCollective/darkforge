@@ -51,6 +51,7 @@
 !.lefthook.yml
 !.mise.toml
 !tasks.*.toml
+!tasks.toml
 !package.json
 
 ##### Pipeline #####
@@ -76,7 +77,7 @@
 !/.attribution/**/
 !LICENCE
 !*.txt
-
+faafaf
 #### LFS Assets ####
 !**/*.png
 !**/*.svg
