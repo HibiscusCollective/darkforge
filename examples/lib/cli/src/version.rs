@@ -9,9 +9,26 @@
  * You should have received a copy of the GNU Affero General Public License along with this program.
  * If not, see https://www.gnu.org/licenses/.
  */
+use std::{io::Write, process::ExitCode};
 
-mod version;
+pub const VERSION: &str = env!("CARGO_PKG_VERSION");
 
-fn main() {
-    println!("Hello, world!");
+pub fn version(mut w: impl Write) -> ExitCode {
+    let _ = write!(w, "v{VERSION}");
+    ExitCode::SUCCESS
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_prints_version() {
+        let mut buf = Vec::new();
+
+        let code = version(&mut buf);
+
+        assert_eq!(code, ExitCode::SUCCESS);
+        assert_eq!(String::from_utf8_lossy(buf.as_slice()), env!("CARGO_PKG_VERSION"));
+    }
 }
