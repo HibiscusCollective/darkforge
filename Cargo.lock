@@ -475,6 +475,10 @@ dependencies = [
 ]
 
 [[package]]
+name = "darkforge-cli"
+version = "0.1.0"
+
+[[package]]
 name = "darkforge_data"
 version = "0.1.0"
 dependencies = [

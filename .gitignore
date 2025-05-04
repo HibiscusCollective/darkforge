@@ -11,12 +11,11 @@
 !*.rs
 
 !.cargo/
+!**/src
 
 !bun.lock
 !tsconfig.json
 !package-lock.json
-
-!src/ui/**/default.json
 
 ##### Linters ######
 !.config
@@ -89,5 +88,4 @@ faafaf
 
 # Explicit Ignores #
 **/node_modules
-src/ui/src-tauri/gen/schemas
 **/target
