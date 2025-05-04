@@ -3,7 +3,7 @@ resolver = "3"
 members = [
   "crates/lib/core", "crates/lib/rng", "crates/lib/data",
   "examples/plugin/hungry_goblins/gdext", "examples/plugin/orcnpie/gdext",
-  "examples/lib/cli",
+  "examples/lib/actions",
 ]
 
 [workspace.package]

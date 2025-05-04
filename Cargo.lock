@@ -558,15 +558,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "darkforge-examples"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "clap",
- "serde",
-]
-
-[[package]]
 name = "darkforge_data"
 version = "0.1.0"
 dependencies = [
@@ -625,6 +616,15 @@ checksum = "976dd42dc7e85965fe702eb8164f21f450704bdde31faefd6471dba214cb594e"
 dependencies = [
  "libc",
  "windows-sys 0.59.0",
+]
+
+[[package]]
+name = "example-actions"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "clap",
+ "serde",
 ]
 
 [[package]]

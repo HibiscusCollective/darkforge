@@ -57,7 +57,7 @@ impl<'a> VersionCmd<'a> {
     ///
     /// ```
     /// use std::io::Cursor;
-    /// use darkforge_examples::version::VersionCmd;
+    /// use example::version::VersionCmd;
     ///
     /// let cmd = VersionCmd::new("1.0.0");
     /// let mut buf = Vec::new();
