@@ -13,8 +13,6 @@ use std::ffi::OsString;
 
 use clap::Parser;
 
-pub mod version;
-
 #[derive(Parser)]
 #[command(name = "Forge Actions Example")]
 #[command(version)]
