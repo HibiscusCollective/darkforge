@@ -9,13 +9,18 @@
  * You should have received a copy of the GNU Affero General Public License along with this program.
  * If not, see https://www.gnu.org/licenses/.
  */
-use std::{io::Write, process::ExitCode};
+use std::io::Write;
 
-pub const VERSION: &str = env!("CARGO_PKG_VERSION");
+pub struct VersionCmd<'a>(&'a str);
 
-pub fn version(mut w: impl Write) -> ExitCode {
-    let _ = write!(w, "v{VERSION}");
-    ExitCode::SUCCESS
+impl<'a> VersionCmd<'a> {
+    pub fn new(str: &'a str) -> Self {
+        VersionCmd(str)
+    }
+
+    pub fn run(&self, mut w: impl Write) -> Result<(), anyhow::Error> {
+        writeln!(w, "v{}", self.0).map_err(Into::into)
+    }
 }
 
 #[cfg(test)]
@@ -24,11 +29,11 @@ mod tests {
 
     #[test]
     fn test_prints_version() {
+        let cmd = VersionCmd::new("1.0.0");
+
         let mut buf = Vec::new();
+        cmd.run(&mut buf).expect("should have succeeded");
 
-        let code = version(&mut buf);
-
-        assert_eq!(code, ExitCode::SUCCESS);
-        assert_eq!(String::from_utf8_lossy(buf.as_slice()), env!("CARGO_PKG_VERSION"));
+        assert_eq!(String::from_utf8_lossy(buf.as_slice()), "v1.0.0\n");
     }
 }
