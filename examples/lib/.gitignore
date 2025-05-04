@@ -1,3 +1,9 @@
 ####### Modules #######
 !actions/
-!actions/src/**/
+
+###### Structure ######
+!*/src/
+!*/src/**/
+
+!*/tests/
+!*/tests/**/

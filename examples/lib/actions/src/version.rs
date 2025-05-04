@@ -57,6 +57,7 @@ impl<'a> VersionCmd<'a> {
     ///
     /// ```
     /// use std::io::Cursor;
+    /// use example_act as example;
     /// use example::version::VersionCmd;
     ///
     /// let cmd = VersionCmd::new("1.0.0");

@@ -9,5 +9,23 @@
  * You should have received a copy of the GNU Affero General Public License along with this program.
  * If not, see https://www.gnu.org/licenses/.
  */
+use std::ffi::OsString;
+
+use clap::Parser;
 
 pub mod version;
+
+#[derive(Parser)]
+#[command(name = "Forge Actions Example")]
+#[command(version)]
+pub struct Cli {}
+
+impl Cli {
+    pub fn parse_from_args<ITER, ARG>(args: ITER) -> Self
+    where
+        ITER: IntoIterator<Item = ARG>,
+        ARG: Into<OsString> + Clone,
+    {
+        Cli::parse_from(args)
+    }
+}

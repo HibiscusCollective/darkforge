@@ -9,11 +9,12 @@
  * You should have received a copy of the GNU Affero General Public License along with this program.
  * If not, see https://www.gnu.org/licenses/.
  */
+use std::{env, process::ExitCode};
 
-mod version;
+use example::Cli;
+use example_act as example;
 
-pub const VERSION: &str = env!("CARGO_PKG_VERSION");
-
-fn main() {
-    println!("Hello, world!");
+fn main() -> ExitCode {
+    Cli::parse_from_args(env::args());
+    ExitCode::SUCCESS
 }
