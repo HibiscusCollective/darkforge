@@ -11,6 +11,8 @@
  */
 use std::io::Write;
 
+use anyhow::anyhow;
+
 pub struct VersionCmd<'a>(&'a str);
 
 impl<'a> VersionCmd<'a> {
@@ -19,12 +21,14 @@ impl<'a> VersionCmd<'a> {
     }
 
     pub fn run(&self, mut w: impl Write) -> Result<(), anyhow::Error> {
-        writeln!(w, "v{}", self.0).map_err(Into::into)
+        writeln!(w, "v{}", self.0).map_err(|e| anyhow!("failed to write version: {}", e))
     }
 }
 
 #[cfg(test)]
 mod tests {
+    use std::io;
+
     use super::*;
 
     #[test]
@@ -35,5 +39,26 @@ mod tests {
         cmd.run(&mut buf).expect("should have succeeded");
 
         assert_eq!(String::from_utf8_lossy(buf.as_slice()), "v1.0.0\n");
+    }
+
+    #[test]
+    fn test_fails_when_write_returns_an_error() {
+        struct FailingWriter;
+        impl Write for FailingWriter {
+            fn write(&mut self, _: &[u8]) -> io::Result<usize> {
+                Err(io::Error::new(io::ErrorKind::Other, "failed"))
+            }
+            fn flush(&mut self) -> io::Result<()> {
+                Ok(())
+            }
+        }
+
+        let cmd = VersionCmd::new("1.0.0");
+        let err = cmd.run(FailingWriter).expect_err("should have failed");
+
+        assert_eq!(
+            err.to_string(),
+            format!("failed to write version: {}", io::Error::new(io::ErrorKind::Other, "failed"))
+        );
     }
 }
