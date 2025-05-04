@@ -1,6 +1,10 @@
 [workspace]
 resolver = "3"
-members = ["crates/lib/rng", "crates/lib/data", "examples/godot_projects/hungry_goblins/gdext", "examples/godot_projects/orcnpie/gdext", "examples/library/cli"]
+members = [
+  "crates/lib/core", "crates/lib/rng", "crates/lib/data",
+  "examples/plugin/hungry_goblins/gdext", "examples/plugin/orcnpie/gdext",
+  "examples/lib/cli",
+]
 
 [workspace.package]
 version = "0.1.0"

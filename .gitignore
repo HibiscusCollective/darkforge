@@ -66,20 +66,16 @@
 ######## AI ########
 !.windsurfrules
 
-##### Modules ######
-!crates
-!crates/lib/
-
+#### Directories ###
+!crates/
 !examples/
-!examples/library/
-!examples/godot_projects/
 
 ##### Licenses #####
 !/.attribution
 !/.attribution/**/
 !LICENCE
 !*.txt
-faafaf
+
 #### LFS Assets ####
 !**/*.png
 !**/*.svg
