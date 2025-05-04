@@ -558,7 +558,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "darkforge-cli"
+name = "darkforge-examples"
 version = "0.1.0"
 dependencies = [
  "anyhow",

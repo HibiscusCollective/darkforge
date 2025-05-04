@@ -1,11 +1,18 @@
 [package]
-name = "darkforge-cli"
+name = "darkforge-examples"
 version.workspace = true
 authors.workspace = true
 edition.workspace = true
 rust-version.workspace = true
 license.workspace = true
 publish = false
+
+[[bin]]
+name = "forge"
+path = "src/main.rs"
+
+[lib]
+path = "src/lib.rs"
 
 [dependencies]
 anyhow = "1.0.98"
