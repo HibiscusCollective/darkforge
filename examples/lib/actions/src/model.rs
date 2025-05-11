@@ -1,6 +1,6 @@
 /*
  * Dark Forge is a library and extension for Godot engine that implements the Blades in the Dark SRD by One Seven Design.
- * Copyright (C) 2025 Pierre Fouilloux, Hibiscus Collective
+ * Copyright (C) 2025 Pierre Fouilloux, Hibiscus Collective 
  *
  * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
  *
@@ -11,21 +11,3 @@
  * If not, see https://www.gnu.org/licenses/.
  */
 
-use godot::{meta::PropertyHintInfo, prelude::*};
-
-#[derive(GodotClass)]
-#[class(base=Resource)]
-pub struct Character {
-    base: Base<Resource>,
-    name: GString,
-}
-
-#[godot_api]
-impl IResource for Character {
-    fn init(base: Base<Resource>) -> Self {
-        Self {
-            base,
-            name: "Character".into(),
-        }
-    }
-}
