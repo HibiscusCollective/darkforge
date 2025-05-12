@@ -1,0 +1,98 @@
+[
+  {
+    "id": "7ef1bdbe-84de-4699-b1bd-be84de569995",
+    "descriptor": {
+      "id": "cf86c1bb-1dd5-4bf2-86c1-bb1dd53bf2ff",
+      "label": "Attune",
+      "description": "You open your mind to arcane power. You might communicate with a ghost. You could try to perceive beyond sight in order to better understand your situation (but Surveying might be better)."
+    }
+  },
+  {
+    "id": "ff1e46d8-c998-4b66-9e46-d8c9984b660d",
+    "descriptor": {
+      "id": "6c91f090-22f8-46c5-91f0-9022f8d6c562",
+      "label": "Command",
+      "description": "You compel swift obedience. You might intimidate or threaten to get what you want. You might lead a gang in a group action. You could try to order people around to persuade them (but Consorting might be better)."
+    }
+  },
+  {
+    "id": "dd47c6f5-5ee6-4d00-87c6-f55ee6fd00c7",
+    "descriptor": {
+      "id": "565086f6-c68f-49d3-9086-f6c68fb9d331",
+      "label": "Consort",
+      "description": "You socialize with friends and contacts. You might gain access to resources, information, people, or places. You might make a good impression or win someone over with your charm and style. You might make new friends or connect with your heritage or background. You could try to manipulate your friends with social pressure (but Sway might be better)."
+    }
+  },
+  {
+    "id": "6f965d2b-1c7b-4cb8-965d-2b1c7bfcb8d2",
+    "descriptor": {
+      "id": "6620e3ce-a426-49d9-a0e3-cea42609d9ca",
+      "label": "Finesse",
+      "description": "You employ dexterous manipulation or subtle misdirection. You might pick someone's pocket. You might handle the controls of a vehicle or direct a mount. You might formally duel an opponent with graceful fighting arts. You could try to employ those arts in a chaotic melee (but Skirmishing might be better). You could try to pick a lock (but Tinkering might be better)."
+    }
+  },
+  {
+    "id": "0f51ccf8-d0aa-4d43-91cc-f8d0aabd43b0",
+    "descriptor": {
+      "id": "18a78600-7c5c-4aa6-a786-007c5ccaa61f",
+      "label": "Hunt",
+      "description": "You carefully track a target. You might follow a target or discover their location. You might arrange an ambush. You might attack with precision shooting from a distance. You could try to bring your guns to bear in a melee (but Skirmishing might be better)."
+    }
+  },
+  {
+    "id": "e700b651-116a-46a5-80b6-51116a56a53d",
+    "descriptor": {
+      "id": "b0e80995-61aa-4c7d-a809-9561aa2c7d99",
+      "label": "Prowl",
+      "description": "You traverse skilfully and quietly. You might sneak past a guard or hide in the shadows. You might run and leap across the rooftops. You might attack someone from hiding with a back-stab or blackjack. You could try to waylay a victim in the midst of battle (but Skirmishing might be better)."
+    }
+  },
+  {
+    "id": "41c86cd4-e105-4025-886c-d4e1053025d2",
+    "descriptor": {
+      "id": "c49d0a81-4b74-48ad-9d0a-814b7488ade3",
+      "label": "Skirmish",
+      "description": "You entangle a target in close combat so they can't easily escape. You might brawl or wrestle with them. You might hack and slash. You might seize or hold a position in battle. You could try to fight in a formal duel (but Finesse might be better)."
+    }
+  },
+  {
+    "id": "31071085-1d8c-4676-8710-851d8cf6763c",
+    "descriptor": {
+      "id": "d3f9f3c8-fc74-40f5-b9f3-c8fc7400f546",
+      "label": "Study",
+      "description": "You scrutinize details and interpret evidence. You might gather information from documents, newspapers, and books. You might do research on an esoteric topic. You might closely analyze a person to detect lies or true feelings. You could try to examine events to understand a pressing situation (but Surveying might be better)."
+    }
+  },
+  {
+    "id": "51f4f160-123f-4565-b4f1-60123f55651d",
+    "descriptor": {
+      "id": "ed875ea8-a606-478f-875e-a8a606278fbb",
+      "label": "Survey",
+      "description": "You observe the situation and anticipate outcomes. You might spot telltale signs of trouble before it happens. You might uncover opportunities or weaknesses. You might detect a person's motivations or intentions. You could try to spot a good ambush point (but Hunting might be better)."
+    }
+  },
+  {
+    "id": "040c72b9-50f3-48b4-8c72-b950f3a8b4d5",
+    "descriptor": {
+      "id": "c1001d72-4457-47c1-801d-72445717c195",
+      "label": "Sway",
+      "description": "You influence with guile, charm or argument. You might lie convincingly. You might persuade someone to do what you want. You might argue a compelling case that leaves no clear rebuttal. You could try to trick people into affection or obedience (but Consorting or Commanding might be better)."
+    }
+  },
+  {
+    "id": "7b2987d5-3295-40a4-a987-d5329570a4e1",
+    "descriptor": {
+      "id": "27c51e30-04be-40aa-851e-3004be30aa99",
+      "label": "Tinker",
+      "description": "You fiddle with devices and mechanisms. You might create a new gadget or alter an existing item. You might pick a lock or crack a safe. You might disable an alarm or trap. You might turn the clockwork devices around the city to your advantage. You could try to use your technical expertise to control a vehicle (but Finesse might be better)."
+    }
+  },
+  {
+    "id": "3abf9fbc-26e5-46e6-bf9f-bc26e556e6d4",
+    "descriptor": {
+      "id": "e8371c7b-4e04-4641-b71c-7b4e04064140",
+      "label": "Wreck",
+      "description": "You unleash savage force. You might smash down a door or wall with a sledgehammer, or use an explosive to do the same. You might employ chaos or sabotage to create a distraction or overcome an obstacle. You could try to overwhelm an enemy with sheer force in battle (but Skirmishing might be better)."
+    }
+  }
+]

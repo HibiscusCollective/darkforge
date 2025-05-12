@@ -9,6 +9,7 @@
 !bacon.toml
 !rust-toolchain.toml
 !*.rs
+!*.jsonc
 
 !.cargo/
 !**/src
@@ -68,6 +69,7 @@
 
 #### Directories ###
 !crates/
+!data/
 !examples/
 
 ##### Licenses #####

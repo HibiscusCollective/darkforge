@@ -1,0 +1,170 @@
+[
+  {
+    "id": "95e474e6-7a2e-4383-a474-e67a2e33834d",
+    "descriptor": {
+      "id": "eba47b99-f20d-41da-a47b-99f20dd1dab7",
+      "label": "Stormborn of the Tempest Peaks",
+      "description": "Your ancestors were chosen by the thunder gods, and your blood crackles with latent power."
+    },
+    "actions": [
+      "7ef1bdbe-84de-4699-b1bd-be84de569995",
+      // Attune
+      "3abf9fbc-26e5-46e6-bf9f-bc26e556e6d4"
+      // Wreck
+    ]
+  },
+  {
+    "id": "695acb9a-5954-4185-9acb-9a595401854a",
+    "descriptor": {
+      "id": "a46b24d7-e196-4608-ab24-d7e196460884",
+      "label": "Whisperfolk of the Hollow Woods",
+      "description": "Your family has long communed with the spirits of the forest, speaking in voices just beyond hearing."
+    },
+    "actions": [
+      // Attune
+      "7ef1bdbe-84de-4699-b1bd-be84de569995",
+      // Survey
+      "51f4f160-123f-4565-b4f1-60123f55651d"
+    ]
+  },
+  {
+    "id": "74f13b0d-1582-448a-b13b-0d1582b48ac0",
+    "descriptor": {
+      "id": "ecba3e2a-7c6d-4268-ba3e-2a7c6d026806",
+      "label": "Ironblood of the Forge Citadel",
+      "description": "Your lineage is steeped in molten metal and the clang of hammers—unyielding in body and will."
+    },
+    "actions": [
+      // Command
+      "ff1e46d8-c998-4b66-9e46-d8c9984b660d",
+      // Tinker
+      "7b2987d5-3295-40a4-a987-d5329570a4e1"
+    ]
+  },
+  {
+    "id": "f5f90a1d-dcc6-4e88-b90a-1ddcc6de8888",
+    "descriptor": {
+      "id": "3ee43e49-c70c-4d26-a43e-49c70ced264c",
+      "label": "Viperkin of the Sun-Baked Sands",
+      "description": "Your people are as swift as striking serpents, striking before the enemy even knows they’re in danger."
+    },
+    "actions": [
+      // Finesse
+      "6f965d2b-1c7b-4cb8-965d-2b1c7bfcb8d2",
+      // Hunt
+      "0f51ccf8-d0aa-4d43-91cc-f8d0aabd43b0"
+    ]
+  },
+  {
+    "id": "c3f66420-4fed-435a-b664-204fede35aaf",
+    "descriptor": {
+      "id": "70345813-a775-4e9f-b458-13a7758e9f6f",
+      "label": "Hearthborn of the Rolling Hills",
+      "description": "Your family is known for their warmth, hospitality, and uncanny ability to make friends (or get out of trouble)."
+    },
+    "actions": [
+      // Consort
+      "dd47c6f5-5ee6-4d00-87c6-f55ee6fd00c7",
+      // Sway
+      "040c72b9-50f3-48b4-8c72-b950f3a8b4d5"
+    ]
+  },
+  {
+    "id": "11bfe861-65c8-41c7-bfe8-6165c8e1c721",
+    "descriptor": {
+      "id": "f9031a87-f534-4708-831a-87f534c7085b",
+      "label": "Gloamstalker of the Mistveil Marshes",
+      "description": "Your kin move like shadows, unseen until it's far too late for their prey."
+    },
+    "actions": [
+      // Prowl
+      "e700b651-116a-46a5-80b6-51116a56a53d",
+      // Hunt
+      "0f51ccf8-d0aa-4d43-91cc-f8d0aabd43b0"
+    ]
+  },
+  {
+    "id": "5a396b22-c04d-4bd4-b96b-22c04dbbd42a",
+    "descriptor": {
+      "id": "5391973c-4035-4a61-9197-3c40357a61ad",
+      "label": "Windrider of the Azure Spires",
+      "descriptor": "Your ancestors rode the winds atop floating islands, mastering both blade and bow with effortless grace."
+    },
+    "actions": [
+      // Finesse
+      "6f965d2b-1c7b-4cb8-965d-2b1c7bfcb8d2",
+      // Skirmish
+      "41c86cd4-e105-4025-886c-d4e1053025d2"
+    ]
+  },
+  {
+    "id": "8b5f3c77-fc70-4205-9f3c-77fc707205ff",
+    "descriptor": {
+      "id": "8e19aab7-ac13-418e-99aa-b7ac13618e49",
+      "label": "Ashborn of the Cinder Wastes",
+      "description": "Your bloodline was forged in fire and ruin, leaving you hardened against both blade and words."
+    },
+    "actions": [
+      // Command
+      "ff1e46d8-c998-4b66-9e46-d8c9984b660d",
+      // Wreck
+      "3abf9fbc-26e5-46e6-bf9f-bc26e556e6d4"
+    ]
+  },
+  {
+    "id": "9f26b1fc-bfdf-4215-a6b1-fcbfdf92153a",
+    "descriptor": {
+      "id": "4dca3853-f3cc-495e-8a38-53f3cc195e6b",
+      "label": "Runewright of the Eldertide Archive",
+      "description": "Your family has always had a knack for uncovering hidden truths, whether in ancient tomes or out amongst the waves."
+    },
+    "actions": [
+      // Study
+      "31071085-1d8c-4676-8710-851d8cf6763c",
+      // Survey
+      "51f4f160-123f-4565-b4f1-60123f55651d"
+    ]
+  },
+  {
+    "id": "62ce7826-4d60-4aa4-8e78-264d60eaa473",
+    "descriptor": {
+      "id": "2146e300-62b5-440d-86e3-0062b5740de0",
+      "label": "Gadgeteer of the Brassworks Bazaar",
+      "description": "Your lineage is one of tinkerers, inventors, and merchants. Always fiddling with the next great contraption, and finding someone to sell it to, preferably at a markup."
+    },
+    "actions": [
+      // Tinker
+      "7b2987d5-3295-40a4-a987-d5329570a4e1",
+      // Consort
+      "dd47c6f5-5ee6-4d00-87c6-f55ee6fd00c7"
+    ]
+  },
+  {
+    "id": "e7592a9d-74ce-4de6-992a-9d74ce7de602",
+    "descriptor": {
+      "id": "52694994-5385-432e-a949-945385732ecf",
+      "label": "Briarblood of the Tangled Thicket",
+      "description": "Your people are experts at turning chaos to their advantage, whether in a brawl or a sabotage."
+    },
+    "actions": [
+      // Prowl
+      "e700b651-116a-46a5-80b6-51116a56a53d",
+      // Skirmish
+      "41c86cd4-e105-4025-886c-d4e1053025d2"
+    ]
+  },
+  {
+    "id": "58f4166f-6080-4328-b416-6f6080b328d5",
+    "descriptor": {
+      "id": "a545f6c0-3983-4a02-85f6-c03983aa0219",
+      "label": "Scion of the Opal Court",
+      "description": "Your family has navigated royal intrigues for generations, mastering the art of persuasion."
+    },
+    "actions": [
+      // Sway
+      "040c72b9-50f3-48b4-8c72-b950f3a8b4d5",
+      // Study
+      "31071085-1d8c-4676-8710-851d8cf6763c"
+    ]
+  }
+]

@@ -1,0 +1,56 @@
+[
+  {
+    "id": "ac462aff-35cf-4cc3-862a-ff35cfacc34f",
+    "descriptor": {
+      "id": "698d9d32-efd2-4492-8d9d-32efd2949247",
+      "label": "Insight",
+      "description": "Your mental acuity. The ability to see through deception, empathise with people and derive understanding from information."
+    },
+    "actions": [
+      // Hunt
+      "0f51ccf8-d0aa-4d43-91cc-f8d0aabd43b0",
+      // Study
+      "31071085-1d8c-4676-8710-851d8cf6763c",
+      // Survey
+      "51f4f160-123f-4565-b4f1-60123f55651d",
+      // Tinker
+      "7b2987d5-3295-40a4-a987-d5329570a4e1"
+    ]
+  },
+  {
+    "id": "340f4f38-225e-4e47-8f4f-38225e9e47ec",
+    "descriptor": {
+      "id": "04c59644-fbe5-42a7-8596-44fbe5d2a783",
+      "label": "Prowess",
+      "description": "Your physical fitness. Your ability to perform feats of physical strength and dexterity, your endurance and stamina to resist pain and injury."
+    },
+    "actions": [
+      // Finesse
+      "6f965d2b-1c7b-4cb8-965d-2b1c7bfcb8d2",
+      // Prowl
+      "e700b651-116a-46a5-80b6-51116a56a53d",
+      // Skirmish
+      "41c86cd4-e105-4025-886c-d4e1053025d2",
+      // Wreck
+      "3abf9fbc-26e5-46e6-bf9f-bc26e556e6d4"
+    ]
+  },
+  {
+    "id": "4e47bf6f-8912-428f-87bf-6f8912228f6a",
+    "descriptor": {
+      "id": "603abf9d-2564-42c3-babf-9d256422c3af",
+      "label": "Resolve",
+      "description": "Your willpower. Your ability to persevere through adversity and resist fear, stress and mental strain."
+    },
+    "actions": [
+      // Attune
+      "7ef1bdbe-84de-4699-b1bd-be84de569995",
+      // Command
+      "ff1e46d8-c998-4b66-9e46-d8c9984b660d",
+      // Consort
+      "dd47c6f5-5ee6-4d00-87c6-f55ee6fd00c7",
+      // Sway
+      "040c72b9-50f3-48b4-8c72-b950f3a8b4d5"
+    ]
+  }
+]
