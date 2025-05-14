@@ -83,4 +83,12 @@ mod tests {
         let actual = input.try_into().expect("should have parsed uuid");
         assert_eq!(expect, actual);
     }
+
+    #[test]
+    fn test_from_uuid() {
+        let uuid = uuid!("f47ac10b-58cc-4372-a567-0e02b2c3d479");
+        let actual = Uuid::from(uuid);
+
+        assert_eq!(Uuid(uuid), actual);
+    }
 }
