@@ -1,6 +1,6 @@
 /*
  * Dark Forge is a library and extension for Godot engine that implements the Blades in the Dark SRD by One Seven Design.
- * Copyright (C) 2025 Pierre Fouilloux, Hibiscus Collective 
+ * Copyright (C) 2025 Pierre Fouilloux, Hibiscus Collective
  *
  * This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
  *
@@ -11,3 +11,46 @@
  * If not, see https://www.gnu.org/licenses/.
  */
 
+pub struct Character {
+    name: String,
+    health: Health,
+    attributes: [Option<Attribute>; 3],
+}
+
+pub struct Health {
+    stress: u8,
+    trauma: [Option<Trauma>; 4],
+    harm: [Option<Harm>; 6],
+}
+
+pub struct Attribute {
+    name: String,
+    description: String,
+    tooltip: String,
+    actions: [Option<Action>; 4],
+}
+
+pub struct Action {
+    name: String,
+    description: String,
+    tooltip: String,
+    level: u8,
+}
+
+pub enum Trauma {
+    Cold,
+    Haunted,
+    Obsessed,
+    Paranoid,
+    Reckless,
+    Soft,
+    Unstable,
+    Vicious,
+}
+
+pub enum Harm {
+    Lesser(String),
+    Moderate(String),
+    Severe(String),
+    Fatal(String),
+}

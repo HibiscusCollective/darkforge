@@ -35,8 +35,7 @@ fn test_prints_version_given_version_flag_is_set(#[case] flag: &str) {
 #[case::full("--help")]
 fn test_prints_help_given_help_flag_is_set(#[case] flag: &str) {
     Command::new(BINARY.clone()).arg(flag).assert().success().stdout(indoc!(
-        "
-            Usage: forge
+        "                                           
 
             Options:
               -h, --help     Print help

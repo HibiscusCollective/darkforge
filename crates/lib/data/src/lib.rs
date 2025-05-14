@@ -19,14 +19,19 @@
 //!     - The first tier is read-only static data, usually loaded on startup and during transition. This store is read-optimised.
 //!     - The second tier is dynamic static data, typically game state that we may want to serialize into a save file. Mostly held in memory, but disk backed if extra storage is required.
 
+/// Module for serialization/deserialization helpers.
 /// Module for data storage.
 pub mod store;
+
+mod codec;
+
 mod uuid;
 
 use std::sync::{Arc, RwLock};
 
 use thiserror::Error;
 
+pub use crate::codec::{CodecError, JSONDeserialize, JSONSerialize};
 use crate::uuid::Uuid;
 
 /// Result type for operations in the data crate.

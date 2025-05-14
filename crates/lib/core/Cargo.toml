@@ -22,7 +22,8 @@ darkforge_rng.workspace = true
 limbo = "0.0.19"
 rand = "0.9.1"
 thiserror = "2.0.12"
-uuid = { version = "1.16.0", features = ["v4"] }
+uuid = { version = "1.16.0", features = ["v4", "serde"] }
+serde = { version = "1.0.219", features = ["derive"] }
 
 [dev-dependencies]
 rstest = "0.25.0"

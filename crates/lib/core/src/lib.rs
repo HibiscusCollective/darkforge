@@ -10,7 +10,7 @@
  * You should have received a copy of the GNU Affero General Public License along with this program.
  * If not, see https://www.gnu.org/licenses/.
  */
-mod descriptor;
+mod character;
 
 pub struct Character {
     name: String,
@@ -30,8 +30,4 @@ pub struct ActionRecord {
 }
 
 #[cfg(test)]
-mod tests {
-    use limbo::Builder;
-
-    use super::*;
-}
+mod tests {}
