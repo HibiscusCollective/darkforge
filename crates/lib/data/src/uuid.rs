@@ -11,14 +11,18 @@
  * If not, see https://www.gnu.org/licenses/.
  */
 
+//! Simple uuid abstraction to keep dependencies isolated. Includes some error handling utilities.
+
 use std::fmt::Debug;
 
 use thiserror::Error;
 
 #[derive(Debug, PartialEq)]
+/// Simple wrapper around `uuid::Uuid`.
 pub struct Uuid(uuid::Uuid);
 
 #[derive(Error, Debug, PartialEq)]
+/// Errors for parsing or converting UUIDs.
 pub enum UuidError {
     #[error("failed to parse uuid: {0}")]
     ParseError(#[from] uuid::Error),
@@ -27,6 +31,7 @@ pub enum UuidError {
 impl TryFrom<[u8; 16]> for Uuid {
     type Error = UuidError;
 
+    /// Try to create a `Uuid` from a 16-byte array.
     fn try_from(value: [u8; 16]) -> Result<Self, Self::Error> {
         Ok(Uuid(uuid::Uuid::from_bytes(uuid::Bytes::from(value))))
     }
@@ -35,6 +40,7 @@ impl TryFrom<[u8; 16]> for Uuid {
 impl TryFrom<String> for Uuid {
     type Error = UuidError;
 
+    /// Try to parse a `Uuid` from a string.
     fn try_from(value: String) -> Result<Self, Self::Error> {
         Ok(uuid::Uuid::parse_str(value.as_str())?.into())
     }
@@ -43,6 +49,7 @@ impl TryFrom<String> for Uuid {
 impl TryFrom<&str> for Uuid {
     type Error = UuidError;
 
+    /// Try to parse a `Uuid` from a string slice.
     fn try_from(value: &str) -> Result<Self, Self::Error> {
         Ok(uuid::Uuid::parse_str(value)?.into())
     }
@@ -51,12 +58,14 @@ impl TryFrom<&str> for Uuid {
 impl TryFrom<u128> for Uuid {
     type Error = UuidError;
 
+    /// Create a `Uuid` from a 128-bit integer.
     fn try_from(value: u128) -> Result<Self, Self::Error> {
         Ok(uuid::Uuid::from_u128(value).into())
     }
 }
 
 impl From<uuid::Uuid> for Uuid {
+    /// Convert from `uuid::Uuid` to this wrapper type.
     fn from(value: uuid::Uuid) -> Self {
         Uuid(value)
     }
