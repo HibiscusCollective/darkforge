@@ -17,32 +17,48 @@ use std::{error, fmt::Debug, future::Future, path::PathBuf};
 use serde::Deserialize;
 use thiserror::Error;
 
+/// Error type for store operations in the data crate.
 #[derive(Debug, Error)]
 #[error(transparent)]
 pub struct StoreError(#[from] Box<dyn error::Error>);
 
+/// Trait for values that can be converted to and from storage representations.
 pub trait Value: Sized {
+    /// Error type for value conversion.
     type Error: error::Error + Debug;
+    /// Result type for value conversion.
     type Result<T>: Into<Result<T, Self::Error>>;
+    /// The underlying value type.
     type ValueType;
 
+    /// Converts the value to another type if possible.
     fn convert_to<T: TryFrom<Self::ValueType>>(&self) -> Self::Result<Option<T>>;
 }
 
+/// Trait for queries that can be run against a store.
 pub trait Query<'a, S: Store, T: Deserialize<'a> = ()> {
+    /// Runs the query on the given store.
     fn run(&self, store: &mut S) -> impl Future<Output = S::Result<Vec<T>>>;
 }
 
+/// Marker trait for key types used in stores.
 pub trait Key {}
 
+/// Trait for store backends.
 pub trait Store {
+    /// Error type for store operations.
     type Error: error::Error + Debug;
+    /// Result type for store operations.
     type Result<T>: Into<Result<T, Self::Error>>;
 }
 
+/// Trait for database migrators.
 pub trait Migrator {
+    /// Error type for migration operations.
     type Error: error::Error + Debug;
+    /// Result type for migration operations.
     type Result<T>: Into<Result<T, Self::Error>>;
 
+    /// Applies migrations from the given path.
     fn apply(&self, path: impl Into<PathBuf>) -> impl Future<Output = Self::Result<()>>;
 }
