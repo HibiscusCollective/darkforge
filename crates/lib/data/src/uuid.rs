@@ -71,6 +71,12 @@ impl From<uuid::Uuid> for Uuid {
     }
 }
 
+impl Default for Uuid {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl Uuid {
     /// Generate a new random UUID.
     pub fn new() -> Self {
@@ -110,6 +116,15 @@ mod tests {
         #[test]
         fn uuid_new_is_valid_v4(_ in 0u8..1) {
             let uuid = Uuid::new();
+
+            assert_eq!(uuid.0.get_version(), Some(Version::Random));
+            assert_eq!(uuid.0.get_variant(), Variant::RFC4122);
+            assert_ne!(uuid.0.as_u128(), 0);
+        }
+
+        #[test]
+        fn uuid_default_is_valid_v4_uuid(_ in 0u8..1) {
+            let uuid = Uuid::default();
 
             assert_eq!(uuid.0.get_version(), Some(Version::Random));
             assert_eq!(uuid.0.get_variant(), Variant::RFC4122);
