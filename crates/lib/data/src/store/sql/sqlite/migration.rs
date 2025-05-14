@@ -18,20 +18,25 @@ use thiserror::Error;
 
 use crate::store::Migrator;
 
+/// Handles database migrations for `SQlite` using libsql.
 pub struct SqliteMigrator {
     db: Arc<Database>,
 }
 
 impl SqliteMigrator {
+    /// Creates a new `SqliteMigrator` with the given database.
     pub fn new(db: Arc<Database>) -> SqliteMigrator {
         SqliteMigrator { db }
     }
 }
 
+/// Error type for migration operations in `SQlite`.
 #[derive(Error, Debug)]
 pub enum MigrationError {
+    /// Error connecting to the database.
     #[error("connection error: {0}")]
     ConnectionError(#[from] libsql::Error),
+    /// Error during migration.
     #[error("migration error: {0}")]
     DatabaseError(#[from] LibsqlDirMigratorError),
 }
@@ -40,6 +45,7 @@ impl Migrator for SqliteMigrator {
     type Error = MigrationError;
     type Result<T> = Result<T, MigrationError>;
 
+    /// Applies migrations from the given path.
     async fn apply(&self, path: impl Into<PathBuf>) -> Self::Result<()> {
         let conn = self.db.connect()?;
         libsql_migration::dir::migrate(&conn, path.into()).await?;

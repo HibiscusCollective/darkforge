@@ -18,21 +18,31 @@ use thiserror::Error;
 
 use crate::store::sql::sqlite::{migration::MigrationError, pool::LibSqlConnectionManager};
 
+/// Module for database migration functionality.
 mod migration;
+/// Module for database connection pooling functionality.
 mod pool;
+/// Module for database store functionality.
 mod store;
 
+/// Type alias for a pooled database connection.
 type Connection<'a> = PooledConnection<'a, LibSqlConnectionManager>;
+/// Type alias for a result type that uses the `SqliteError` error type.
 type Result<T> = result::Result<T, SqliteError>;
 
+/// Error type for `SQlite` operations in the data store.
 #[derive(Error, Debug)]
 pub enum SqliteError {
+    /// An error from the underlying libsql library.
     #[error("libsql error: {0}")]
     LibSql(#[from] libsql::Error),
+    /// An error related to connection pooling.
     #[error("connection error: {0}")]
     Connection(#[from] RunError<libsql::Error>),
+    /// An error during deserialization.
     #[error("deserialization error: {0}")]
     Deserialization(#[from] SerdeError),
+    /// An error during migration.
     #[error(transparent)]
     MigrationError(#[from] MigrationError),
 }

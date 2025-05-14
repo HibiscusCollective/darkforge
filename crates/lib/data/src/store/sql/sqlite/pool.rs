@@ -14,20 +14,25 @@
 use bb8::ManageConnection;
 use libsql::{Database, errors};
 
+/// Connection manager for libsql database connections.
 pub struct LibSqlConnectionManager(pub Database);
 
+/// Implementation of the `ManageConnection` trait for `LibSqlConnectionManager`.
 impl ManageConnection for LibSqlConnectionManager {
     type Connection = libsql::Connection;
     type Error = errors::Error;
 
+    /// Establishes a new database connection.
     async fn connect(&self) -> Result<Self::Connection, Self::Error> {
         self.0.connect()
     }
 
+    /// Checks if the connection is valid.
     async fn is_valid(&self, conn: &mut Self::Connection) -> Result<(), Self::Error> {
         conn.execute("SELECT 1;", ()).await.map(|_| ())
     }
 
+    /// Determines if the connection has broken.
     fn has_broken(&self, _: &mut Self::Connection) -> bool {
         false
     }

@@ -24,11 +24,14 @@ use crate::store::{
     },
 };
 
+/// Store implementation for `SQlite` using libsql and bb8 connection pooling.
 pub struct SqliteStore {
     pool: Pool<LibSqlConnectionManager>,
 }
 
+/// Trait for types that can be converted to SQL parameters.
 trait IntoParams {
+    /// Converts the type into SQL parameters.
     fn to_params(&self) -> Result<params::Params>;
 }
 
@@ -38,12 +41,14 @@ impl Store for SqliteStore {
 }
 
 impl SqliteStore {
+    /// Creates a new `SqliteStore` with the given connection pool.
     pub fn new(pool: Pool<LibSqlConnectionManager>) -> SqliteStore {
         SqliteStore { pool }
     }
 }
 
 impl IntoValue for &Param {
+    /// Converts a `Param` into a SQL value.
     fn into_value(self) -> libsql::Result<Value> {
         match self {
             Param::Null => Ok(Value::Null),
@@ -69,19 +74,20 @@ impl IntoValue for &Param {
 }
 
 impl IntoParams for SqlQuery {
+    /// Converts a `SqlQuery` into SQL parameters.
     fn to_params(&self) -> Result<params::Params> {
         match self.clone().params {
             Params::None => Ok(params::Params::None),
             Params::Positional(p) => {
                 let mut values = Vec::with_capacity(p.len());
-                for param in p.iter() {
+                for param in &p {
                     values.push(param.into_value()?);
                 }
                 Ok(params::Params::Positional(values))
             }
             Params::Named(np) => {
                 let mut named_values = Vec::with_capacity(np.len());
-                for (k, v) in np.iter() {
+                for (k, v) in &np {
                     named_values.push((k.clone(), v.into_value()?));
                 }
                 Ok(params::Params::Named(named_values))
@@ -90,7 +96,9 @@ impl IntoParams for SqlQuery {
     }
 }
 
+/// Query implementation for `SQlite`.
 impl<T: for<'de> Deserialize<'de>> Query<'_, SqliteStore, T> for SqlQuery {
+    /// Runs the query on the given store.
     async fn run(&self, store: &mut SqliteStore) -> Result<Vec<T>> {
         let conn = store.pool.get().await?;
         let mut rows = conn.query(self.query.as_str(), self.to_params()?).await?;
@@ -111,6 +119,7 @@ mod tests {
     use super::*;
     use crate::sql;
 
+    /// Test struct for testing the `SqliteStore`.
     #[derive(serde::Deserialize, PartialEq, Eq, Debug)]
     struct Test {
         name: String,
@@ -147,6 +156,7 @@ mod tests {
         );
     }
 
+    /// Prepares a test database with the given setup queries.
     async fn prepare_db(setup: Vec<SqlQuery>) -> Pool<LibSqlConnectionManager> {
         let db = libsql::Builder::new_local(":memory:")
             .build()

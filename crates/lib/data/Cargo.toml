@@ -1,5 +1,5 @@
 [package]
-name = "darkforge_data"
+name = "darkforge-data"
 version.workspace = true
 authors.workspace = true
 categories.workspace = true
@@ -19,17 +19,14 @@ workspace = true
 
 [dependencies]
 bb8 = "0.9.0"
-libsql = { version = "0.9.5", default-features = false, features = ["core", "serde"] }
+libsql = { version = "0.9.6", default-features = false, features = ["core", "serde"] }
 libsql_migration = { version = "0.2.2", features = ["dir"] }
 thiserror = "2.0.12"
 uuid = { version = "1.16.0", features = ["v4"] }
 anyhow = "1.0.98"
-num-traits = "0.2.19"
 serde = "1.0.219"
-tokio-stream = "0.1.17"
-futures = "0.3.31"
 
 [dev-dependencies]
-blake3 = "1.8.2"
+proptest = "1.4"
 rstest = "0.25.0"
 tokio = "1.44.2"

@@ -17,6 +17,7 @@ use uuid::Uuid;
 pub mod sqlite;
 
 #[macro_export]
+/// Creates a new SQL query from a string literal.
 macro_rules! sql {
     ($sql:expr) => {
         SqlQuery::new($sql, $crate::store::sql::Params::None)
@@ -39,46 +40,74 @@ macro_rules! implement_into_param {
     };
 }
 
+/// Error type for SQL operations in the data store.
 #[derive(Error, Debug)]
 #[error(transparent)]
 pub struct SqlError(#[from] anyhow::Error);
 
+/// Represents a parameter for SQL queries.
 #[derive(Debug, Clone, PartialEq)]
 pub enum Param {
+    /// Null value.
     Null,
+    /// Unsigned 8-bit integer.
     U8(u8),
+    /// Unsigned 16-bit integer.
     U16(u16),
+    /// Unsigned 32-bit integer.
     U32(u32),
+    /// Unsigned 64-bit integer.
     U64(u64),
+    /// Unsigned 128-bit integer.
     U128(u128),
+    /// Unsigned size integer.
     USize(usize),
+    /// Signed 8-bit integer.
     I8(i8),
+    /// Signed 16-bit integer.
     I16(i16),
+    /// Signed 32-bit integer.
     I32(i32),
+    /// Signed 64-bit integer.
     I64(i64),
+    /// Signed 128-bit integer.
     I128(i128),
+    /// Signed size integer.
     ISize(isize),
+    /// 32-bit floating point.
     F32(f32),
+    /// 64-bit floating point.
     F64(f64),
+    /// String value.
     String(String),
+    /// Byte array.
     Bytes(Vec<u8>),
+    /// UUID value.
     Uuid(Uuid),
 }
 
+/// Represents the parameters for a SQL query.
 #[derive(Clone, Debug, PartialEq)]
 pub enum Params {
+    /// No parameters.
     None,
+    /// Positional parameters.
     Positional(Vec<Param>),
+    /// Named parameters.
     Named(Vec<(String, Param)>),
 }
 
+/// Represents a SQL query and its parameters.
 #[derive(Clone, Debug, PartialEq)]
 pub struct SqlQuery {
+    /// The SQL query string.
     pub query: String,
+    /// The parameters for the query.
     pub params: Params,
 }
 
 impl SqlQuery {
+    /// Creates a new `SqlQuery` from a query string and parameters.
     pub fn new(query: impl Into<String>, params: Params) -> Self {
         Self { query: query.into(), params }
     }
